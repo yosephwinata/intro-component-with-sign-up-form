@@ -9,6 +9,10 @@ export default {
         blue: "hsl(248, 32%, 49%)",
         "dark-blue": "hsl(249, 10%, 26%)",
         "grayish-blue": "hsl(246, 25%, 77%)",
+        "light-gray": "hsl(0, 0%, 87%)",
+      },
+      boxShadow: {
+        "green-button": "0 0.3rem hsl(154, 47%, 47%)",
       },
     },
   },
