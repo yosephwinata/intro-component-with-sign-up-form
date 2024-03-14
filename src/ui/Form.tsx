@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import toast from "react-hot-toast";
 import Input from "./Input";
 
 interface FormData {
@@ -32,9 +33,32 @@ function Form(): JSX.Element {
   // console.log("watch", watch("firstName"));
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+    // console.log(data);
+    // console.log(
+    //   "before",
+    //   watch("firstName"),
+    //   watch("lastName"),
+    //   watch("confirmPassword")
+    // );
+    notify(data.firstName);
     reset();
+    // console.log(
+    //   "after",
+    //   watch("firstName"),
+    //   watch("lastName"),
+    //   watch("confirmPassword")
+    // );
   };
+
+  const notify = (name: string): void => {
+    // Note: The second argument is optional
+    toast.success(`Welcome aboard, ${name}`, {
+      duration: 3000,
+      position: "top-center",
+    });
+  };
+
+  console.log(watch("firstName"), watch("lastName"), watch("confirmPassword"));
 
   return (
     <>

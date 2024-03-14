@@ -1,8 +1,10 @@
+import { Toaster } from "react-hot-toast";
 import Form from "./ui/Form";
 
 function App(): JSX.Element {
   return (
     <div className="bg-red min-h-screen">
+      <Toaster />
       <div className="bg-[url('/src/assets/bg-intro-mobile.png')] md:bg-[url('/src/assets/bg-intro-desktop.png')] pt-[5.5rem] pb-[4.25rem] xl:flex xl:justify-center xl:items-center min-h-screen">
         <div className="w-[20.4375rem] mx-auto xl:w-auto xl:mx-0 xl:flex xl:items-center xl:gap-[2.8125rem]">
           <div className="xl:w-[32.8125rem]">
