@@ -1,5 +1,6 @@
 import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
+import errorIcon from "/src/assets/icon-error.svg";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
@@ -23,7 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
           {error && (
             <img
-              src="/src/assets/icon-error.svg"
+              src={errorIcon}
               alt="Error icon"
               className="absolute right-3 top-1/2 -translate-y-1/2 xl:right-5"
             />
