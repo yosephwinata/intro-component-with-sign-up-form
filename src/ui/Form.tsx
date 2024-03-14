@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import toast from "react-hot-toast";
 import Input from "./Input";
+import { useEffect } from "react";
 
 interface FormData {
   firstName: string;
@@ -16,38 +17,26 @@ function Form(): JSX.Element {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
     control,
     reset,
   } = useForm<FormData>({
     mode: "onBlur",
-    // defaultValues: {
-    //   firstName: "Winter",
-    //   lastName: "Bill",
-    //   email: "winterbill@gmail.com",
-    //   password: "Pakhaji5%",
-    // },
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
   const password = watch("password");
   // console.log("watch", watch("firstName"));
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    // console.log(data);
-    // console.log(
-    //   "before",
-    //   watch("firstName"),
-    //   watch("lastName"),
-    //   watch("confirmPassword")
-    // );
+    console.log("Submitted data:", data);
     notify(data.firstName);
-    reset();
-    // console.log(
-    //   "after",
-    //   watch("firstName"),
-    //   watch("lastName"),
-    //   watch("confirmPassword")
-    // );
   };
 
   const notify = (name: string): void => {
@@ -58,7 +47,18 @@ function Form(): JSX.Element {
     });
   };
 
-  console.log(watch("firstName"), watch("lastName"), watch("confirmPassword"));
+  useEffect(() => {
+    // Reset the form only after a successful submission
+    if (isSubmitSuccessful) {
+      reset({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <>
