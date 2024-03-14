@@ -47,6 +47,8 @@ function Form(): JSX.Element {
     });
   };
 
+  // The official docs suggests to call reset() from inside useEffect.
+  // Don't call reset() in the onSubmit function.
   useEffect(() => {
     // Reset the form only after a successful submission
     if (isSubmitSuccessful) {
