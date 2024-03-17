@@ -1,4 +1,4 @@
-# Tic Tac Toe
+# Intro Component with Sign Up Form
 
 ## Tech stack
 
